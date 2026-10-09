@@ -71,10 +71,10 @@ void draw()
       if (columns == temperatures[rows].length - 1 && rows < temperatures.length - 1) // condition used to move from one day to another
       {
         line(
-          100 + (rows + 1) * 45 + columns * 8,
-          600 - temperatures[rows][columns] * 17,
-          100 + (rows + 2) * 45,
-          600 - temperatures[rows + 1][0] * 17
+          100 + (rows + 1) * 45 + columns * 8, // Calculates the horizontal (X) pixel position. Starts at a base offset of 100 pixels. Shifts right (row) by 45 pixels and further shifts right (column) by 8 pixels.
+          600 - temperatures[rows][columns] * 17, // Calculates the vertical (Y) pixel position. Higher temperatures are higher on the screen. Each degree of temperature is scaled by 17 pixels.
+          100 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
+          600 - temperatures[rows + 1][0] * 17 // Grabs the temperature value of the next column. Scales it by 17 and flips it relative to the 600 pixel baseline.
         );
       }
     }
