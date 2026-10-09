@@ -20,7 +20,7 @@ void draw()
   text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
   line(100, 600, 1010, 600); // Horizontal line (X-Axis)
   text("Time/Day", 525, 675); // Positioning of the x-axis label (Time/Day)
-  
+  text("TEMPERATURE WAVE", 500, 50); // Positioning of graph title
   y = 600; // initial value of y
   for (temp = 0; temp < 35; temp = temp + 5) // a for loop is used to display values on the y axis
   {
@@ -56,6 +56,27 @@ void draw()
         fill(234, 47, 14); // circle's color is red if temperature is more than 20 degrees
       }
       ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (temperatures[rows][columns] * 17), 10, 10); // sorts the positioning of each data point
+      
+      if (columns < temperatures[rows].length - 1) // condition used to connect all temperature points
+      {
+        line(
+          100 + (rows + 1) * 45 + columns * 8,
+          600 - temperatures[rows][columns] * 17,
+          100 + (rows + 1) * 45 + (columns + 1) * 8,
+          600 - temperatures[rows][columns + 1] * 17
+        );
+      }
+      
+      
+      if (columns == temperatures[rows].length - 1 && rows < temperatures.length - 1) // condition used to move from one day to another
+      {
+        line(
+          100 + (rows + 1) * 45 + columns * 8,
+          600 - temperatures[rows][columns] * 17,
+          100 + (rows + 2) * 45,
+          600 - temperatures[rows + 1][0] * 17
+        );
+      }
     }
   }
 }
