@@ -5,7 +5,7 @@ int x; // x is used to display the position of the numbers on the x axis
 int[][] temperatures = {
 {14, 16, 20, 21, 18}, // Day 1
 {15, 13, 13, 11, 11},  // Day 2
-{9, 11, 13, 15, 15},  // Day 3
+{9, 11, 13, 15, 15}, // Dau 3
 {17, 18, 19, 18, 18}, // Day 4
 {13, 14, 15, 15, 14}};  // Day 5
 
@@ -24,6 +24,7 @@ void setup()
 
 void draw()
 {
+  stroke(255); // White lines for the axes
   fill(255, 255, 255); // labels are colored white
   line(100, 80, 100, 600); // Vertical line (Y-Axis)
   text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
@@ -68,6 +69,7 @@ void draw()
       
       if (columns < temperatures[rows].length - 1) // condition used to connect all temperature points
       {
+        stroke(255, 100, 50); // Orange-red line
         line(
           100 + (rows + 1) * 45 + columns * 8,
           600 - temperatures[rows][columns] * 17,
@@ -87,7 +89,7 @@ void draw()
       }
     }
   }
-
+  
   for (int rows = 0; rows < feelsLikeTemperatures.length; rows = rows + 1) // an outer for loop to access each value from each row
   {
     for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns = columns + 1) // an inner for loop to access each value from each column
@@ -134,4 +136,3 @@ void draw()
     }
   }
 }
-
