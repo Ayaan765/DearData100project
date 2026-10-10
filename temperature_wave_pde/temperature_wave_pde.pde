@@ -76,7 +76,6 @@ void draw()
         );
       }
       
-      
       if (columns == temperatures[rows].length - 1 && rows < temperatures.length - 1) // condition used to move from one day to another
       {
         line(
@@ -84,6 +83,52 @@ void draw()
           600 - temperatures[rows][columns] * 17, // Calculates the vertical (Y) pixel position. Higher temperatures are higher on the screen. Each degree of temperature is scaled by 17 pixels.
           100 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
           600 - temperatures[rows + 1][0] * 17 // Grabs the temperature value of the next column. Scales it by 17 and flips it relative to the 600 pixel baseline.
+        );
+      }
+    }
+  }
+
+  for (int rows = 0; rows < feelsLikeTemperatures.length; rows = rows + 1) // an outer for loop to access each value from each row
+  {
+    for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns = columns + 1) // an inner for loop to access each value from each column
+    {
+      if (feelsLikeTemperatures[rows][columns] < 10) // conditional statement to check if the temperature is less than 10
+      {
+        fill(31, 179, 222); // circle's color is light blue if temperature is lower than 10
+      }
+      else if (feelsLikeTemperatures[rows][columns] < 15) // conditional statement to check if the temperature is less than 15
+      {
+        fill(134, 232, 82); // circle's color is green if mild weather (not too hot or cold)
+      }
+      else if (feelsLikeTemperatures[rows][columns] < 20) // conditional statement to check if the temperature is less than 20
+      {
+        fill(246, 250, 35); // circle's color is yellow if temperature is less than 20 but higher than 15
+      }
+      else 
+      {
+        fill(234, 47, 14); // circle's color is red if temperature is more than 20 degrees
+      }
+      ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (feelsLikeTemperatures[rows][columns] * 17), 10, 10); // sorts the positioning of each data point
+      
+      if (columns < feelsLikeTemperatures[rows].length - 1) // condition used to connect all temperature points
+      {
+        stroke(139, 92, 246); //Purple lines
+        
+        line(
+          100 + (rows + 1) * 45 + columns * 8,
+          600 - feelsLikeTemperatures[rows][columns] * 17,
+          100 + (rows + 1) * 45 + (columns + 1) * 8,
+          600 - feelsLikeTemperatures[rows][columns + 1] * 17
+        );
+      }
+      
+      if (columns == feelsLikeTemperatures[rows].length - 1 && rows < feelsLikeTemperatures.length - 1) // condition used to move from one day to another
+      {
+        line(
+          100 + (rows + 1) * 45 + columns * 8, // Calculates the horizontal (X) pixel position. Starts at a base offset of 100 pixels. Shifts right (row) by 45 pixels and further shifts right (column) by 8 pixels.
+          600 - feelsLikeTemperatures[rows][columns] * 17, // Calculates the vertical (Y) pixel position. Higher temperatures are higher on the screen. Each degree of temperature is scaled by 17 pixels.
+          100 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
+          600 - feelsLikeTemperatures[rows + 1][0] * 17 // Grabs the temperature value of the next column. Scales it by 17 and flips it relative to the 600 pixel baseline.
         );
       }
     }
