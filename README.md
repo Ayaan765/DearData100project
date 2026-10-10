@@ -1,39 +1,59 @@
-My twenty days of temperature
+The Rhythm of Temperature
 
-About the project concept
+About the Project
 
-This project is a creative data visualization carried out through Processing (Java). It includes the changing temperature data during 20 days in the wave that is shifting from left to right every time when the day passes.
+The project involves recording the temperatures that I experience each time I go outside over a span of 20 days and uses Processing (Java) to create a creative, continuous wave that goes from left to right.
 
-Research Problem
+Research Question
 
-How temperature varies during the day and during the 20-day period while I am walking outside?
+What happens to the temperature every time I go outside over a period of 20 days?
 
-Data gathering 
+Data Collection
 
-I gathered temperature data during the twenty days of work trying to have 5 observations of temperature each day which means I have, at least, 100 observations collected.
+Every time I went out I noted down the temperature with the aim of gathering at least 100 observations. Each observation corresponds to the temperature at the time when I went outside.
 
-Data includes the date and the time and temperature for each observation.
+The data sets the date, time and temperature which were recorded during each observation.
 
-Concept of a design
+SCAMPER Design Process
 
-Temperature data is demonstrated in the form of a continuous wave. Each observation can be identified by point on the wave with the help of lines which connect these points.
+S — Substitute
 
-Different colors and temperature designations make the temperatures easier to understand.
+I decided to use a continuous wave rather than a traditional graph in order to present my temperature observations in a more creative manner.
 
-Technologies applied
+C — Combine
 
-Processing
-Java
+To make the data more visually interesting, I combined the wave with colours, points and temperature labels.
+
+A — Adapt
+
+I shaped the design to resemble a flowing wave in order to show how the temperature changes every time I go outside.
+
+M — Modify
+
+I changed the colours and appearance of the wave to show the differences caused by colder and warmer temperatures.
+
+P — Put to Another Use
+
+I created a visual record of the temperatures I came across by drawing on the everyday experience of going outside.
+
+E — Eliminate
+
+I got rid of the unnecessary visual elements so that attention could remain on the temperature observations and the wave.
+
+R — Reverse / Rearrange
+
+I ordered my observations from left to right according to time so that the viewers will be able to see the temperature changes over the 20 days.
+
+Technologies Used
+
+Processing (Java)
+
 Microsoft Excel
+
 GitHub
 
-Files
+How to Run
 
-MyTemperatureSketch.pde — sketch created in Processing
-temperature.csv — data on collected temperatures
+In Processing open the sketch.
 
-How to work with the software
-
-Download or clone the project repository.
-Open .pde file using Processing.
-Now that the sketch is running you will be able to see the visualized data.
+To view the visualisation, run the sketch.
