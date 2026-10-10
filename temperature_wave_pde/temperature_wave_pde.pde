@@ -17,20 +17,28 @@ int[][] feelsLikeTemperatures = {
 {12, 11, 14, 12, 10}}; // Day 5
 void setup()
 {
-  size(1200, 800); // width is 1200 and height is 800 
+  size(1250, 800); // width is 1250 and height is 800 
   textSize(12); // Size of text
-  background(219, 169, 31); // Background color of orange
 }
 
 void draw()
 {
+  background(219, 169, 31); // Background color of orange
   stroke(255); // White lines for the axes
+  strokeWeight(2); // Thickness of the lines is 2 to keep it smoother
   fill(255, 255, 255); // labels are colored white
   line(100, 80, 100, 600); // Vertical line (Y-Axis)
   text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
   line(100, 600, 1010, 600); // Horizontal line (X-Axis)
   text("Time/Day", 525, 675); // Positioning of the x-axis label (Time/Day)
   text("TEMPERATURE WAVE", 500, 50); // Positioning of graph title
+  text("KEY", 1030, 150); // Positioning of the Keys title
+  text("Orange-red line = Actual temperature", 1030, 180); // Positioning of the key ('Actual temperature') description of the orange-red line meaning
+  text("Purple line = Feels-like temperature", 1030, 200); // Positioning of the key ('Feels like temperature') description of the purple line meaning
+  text("Blue: below 10°C", 1030, 220); // Positioning of the key and text (Lower temperatures) presenting the color of blue
+  text("Green: 10-14°C", 1030, 240); // Positioning of the key and text (Temperatures between 10-14) presenting the color of green
+  text("Yellow: 15-19°C", 1030, 260); // Positioning of the key and text (Temperatures between 15-19) presenting the color of yellow
+  text("Red: 20°C or above", 1030, 280); // Positioning of the key and text (Temperatures above or at 20) presenting the color of red
   y = 600; // initial value of y
   for (temp = 0; temp < 35; temp = temp + 5) // a for loop is used to display values on the y axis
   {
