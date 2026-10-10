@@ -5,7 +5,16 @@ int x; // x is used to display the position of the numbers on the x axis
 int[][] temperatures = {
 {14, 16, 20, 21, 18}, // Day 1
 {15, 13, 13, 11, 11},  // Day 2
-{9, 11, 13, 15, 15}};  // Day 3
+{9, 11, 13, 15, 15},  // Day 3
+{17, 18, 19, 18, 18}, // Day 4
+{13, 14, 15, 15, 14}};  // Day 5
+
+int[][] feelsLikeTemperatures = {
+{14, 16, 22, 20, 18}, // Day 1
+{13, 11, 9, 7, 8}, // Day 2
+{6, 13, 13, 14, 12}, // Day 3
+{13, 13, 14, 16, 14}, // Day 4
+{12, 11, 14, 12, 10}}; // Day 5
 void setup()
 {
   size(1200, 800); // width is 1200 and height is 800 
