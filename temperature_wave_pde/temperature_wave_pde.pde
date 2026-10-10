@@ -5,7 +5,7 @@ int x; // x is used to display the position of the numbers on the x axis
 int[][] temperatures = {
 {14, 16, 20, 21, 18}, // Day 1
 {15, 13, 13, 11, 11},  // Day 2
-{9, 11, 13, 15, 15}, // Dau 3
+{9, 11, 13, 15, 15}, // Day 3
 {17, 18, 19, 18, 18}, // Day 4
 {13, 14, 15, 15, 14}};  // Day 5
 
