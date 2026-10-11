@@ -5,7 +5,7 @@ int x; // x is used to display the position of the numbers on the x axis
 int[][] temperatures = {
 {14, 16, 20, 21, 18}, // Day 1
 {15, 13, 13, 11, 11},  // Day 2
-{9, 11, 13, 15, 15}, // Day 3
+{9, 11, 13, 15, 15}, // Dau 3
 {17, 18, 19, 18, 18}, // Day 4
 {13, 14, 15, 15, 14}};  // Day 5
 
@@ -75,24 +75,40 @@ void draw()
       }
       ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (temperatures[rows][columns] * 17), 10, 10); // sorts the positioning of each data point
       
-      if (columns < temperatures[rows].length - 1) // condition used to connect all temperature points
+      // Check whether there is another temperature reading in the same day.
+      // length - 1 gives the index of the last column (4 when there are 5 readings).
+      if (columns < temperatures[rows].length - 1) 
       {
         stroke(255, 100, 50); // Orange-red line
         line(
+          // Starting X: positions the current temperature point horizontally.
+          // 100 = starting offset; 45 = spacing for each day; 8 = spacing for each reading.
           100 + (rows + 1) * 45 + columns * 8,
+          
+          // Starting Y: converts the current temperature into a screen position.
+          // 600 = vertical baseline; 17 = pixels used for each degree.
           600 - temperatures[rows][columns] * 17,
+          
+          // Ending X: calculates the horizontal position of the NEXT reading.
+          // columns + 1 moves to the next column within the same day.
           100 + (rows + 1) * 45 + (columns + 1) * 8,
+          
+          // Ending Y: uses the temperature in the next column as the line's endpoint.
           600 - temperatures[rows][columns + 1] * 17
         );
       }
-      
+      // Check whether we're at the last reading of the current day
+      // AND whether another day exists after the current day.
+      // && means BOTH conditions must be true.
       if (columns == temperatures[rows].length - 1 && rows < temperatures.length - 1) // condition used to move from one day to another
       {
         line(
-          100 + (rows + 1) * 45 + columns * 8, // Calculates the horizontal (X) pixel position. Starts at a base offset of 100 pixels. Shifts right (row) by 45 pixels and further shifts right (column) by 8 pixels.
-          600 - temperatures[rows][columns] * 17, // Calculates the vertical (Y) pixel position. Higher temperatures are higher on the screen. Each degree of temperature is scaled by 17 pixels.
-          100 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
-          600 - temperatures[rows + 1][0] * 17 // Grabs the temperature value of the next column. Scales it by 17 and flips it relative to the 600 pixel baseline.
+          100 + (rows + 1) * 45 + columns * 8, // Starting X: horizontal position of the current day's last reading.
+          600 - temperatures[rows][columns] * 17, // Starting Y: vertical position of the current day's last temperature.
+          100 + (rows + 2) * 45, // Ending X: horizontal position for the first reading of the next day.
+                                 // rows + 2 moves the position forward to the next day.
+          600 - temperatures[rows + 1][0] * 17 // Ending Y: vertical position of the next day's first temperature.
+                                               // rows + 1 selects the next row; [0] selects its first reading.
         );
       }
     }
@@ -125,13 +141,28 @@ void draw()
         stroke(139, 92, 246); //Purple lines
         
         line(
-          100 + (rows + 1) * 45 + columns * 8,
+          // Starting X: horizontal position of the current reading. 
+          // 100 = Starting offset, 45 = spacing between days,
+          // 8 = spacing between readings within the day. 
+          100 + (rows + 1) * 45 + columns * 8, 
+          
+          // Starting Y: vertical position of the current feels-like temperature
+          // 600 = baseline of the graph; 17 = pixels per degree. 
           600 - feelsLikeTemperatures[rows][columns] * 17,
+          
+          // Ending X: horizontal position of the NEXT reading
+          // columns + 1 selects the next reading within the same day
           100 + (rows + 1) * 45 + (columns + 1) * 8,
+          
+          // Ending Y: vertical position of the next feels-like temperature.
+          // [rows][columns + 1] accesses the next reading in the same day.
           600 - feelsLikeTemperatures[rows][columns + 1] * 17
         );
       }
       
+      // Check whether we're at the last reading of the current day
+      // AND whether another day exists after the current day.
+      // && means BOTH conditions must be true.
       if (columns == feelsLikeTemperatures[rows].length - 1 && rows < feelsLikeTemperatures.length - 1) // condition used to move from one day to another
       {
         line(
