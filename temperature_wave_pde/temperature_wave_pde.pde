@@ -4,10 +4,10 @@ int days; // days is used to store the numbers on the x axis
 int x; // x is used to display the position of the numbers on the x axis
 int[][] temperatures = {
 {14, 16, 20, 21, 18}, // Day 1
-{15, 13, 13, 11, 11},  // Day 2
+{15, 13, 13, 11, 11}, // Day 2
 {9, 11, 13, 15, 15}, // Day 3
 {17, 18, 19, 18, 18}, // Day 4
-{13, 14, 15, 15, 14}};  // Day 5
+{13, 14, 15, 15, 14}, // Day 5
 {12, 15, 16, 15, 14}, // Day 6
 {13, 15, 16, 17, 17}, // Day 7
 {19, 19, 20, 19, 17}}; // Day 8
@@ -17,7 +17,7 @@ int[][] feelsLikeTemperatures = {
 {13, 11, 9, 7, 8}, // Day 2
 {6, 13, 13, 14, 12}, // Day 3
 {13, 13, 14, 16, 14}, // Day 4
-{12, 11, 14, 12, 10}}; // Day 5
+{12, 11, 14, 12, 10}, // Day 5
 {11, 15, 15, 16, 14}, // Day 6
 {13, 12, 13, 14, 17}, // Day 7
 {15, 17, 19, 17, 13}}; // Day 8
@@ -31,8 +31,63 @@ void setup()
 void draw()
 {
   background(219, 169, 31); // Background color of orange
+  noStroke(); // Removes the outline from the filled shape
+  fill(255, 100, 50, 150); // Transparent orange-red fill
+  
+  beginShape();
+
+  // Start at the bottom of the graph
+  vertex(145, 600);
+
+  // Follow every actual temperature reading
+  for (int rows = 0; rows < temperatures.length; rows = rows + 1)
+  {
+  for (int columns = 0; columns < temperatures[rows].length; columns = columns + 1)
+  {
+    vertex(
+      100 + (rows + 1) * 45 + columns * 8,
+      600 - temperatures[rows][columns] * 17
+    );
+  }
+  }
+
+   // Return to the bottom at the final reading
+   vertex(
+      100 + temperatures.length * 45
+      + (temperatures[temperatures.length - 1].length - 1) * 8,
+      600
+   );
+
+  endShape(CLOSE);
+  
+  fill(132, 92, 246, 50); // color of mountain
+  beginShape();
+
+  // Start at the bottom of the graph
+  vertex(145, 600);
+
+  // Follow every actual temperature reading
+  for (int rows = 0; rows < feelsLikeTemperatures.length; rows = rows + 1)
+  {
+  for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns = columns + 1)
+  {
+    vertex(
+      100 + (rows + 1) * 45 + columns * 8,
+      600 - feelsLikeTemperatures[rows][columns] * 17
+    );
+  }
+  }
+
+   // Return to the bottom at the final reading
+   vertex(
+      100 + feelsLikeTemperatures.length * 45
+      + (feelsLikeTemperatures[feelsLikeTemperatures.length - 1].length - 1) * 8,
+      600
+   );
+
+  endShape(CLOSE);
+  
   stroke(255); // White lines for the axes
-  strokeWeight(2); // Thickness of the lines is 2 to keep it smoother
   fill(255, 255, 255); // labels are colored white
   line(100, 80, 100, 600); // Vertical line (Y-Axis)
   text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
@@ -66,27 +121,42 @@ void draw()
     {
       if (temperatures[rows][columns] < 10) // conditional statement to check if the temperature is less than 10
       {
-        fill(31, 179, 222); // circle's color is light blue if temperature is lower than 10
-      }
+        fill(31, 179, 222); // square's color is light blue if temperature is lower than 10
+        square(
+        100 + (rows + 1) * 45 + columns * 8 - 5,
+        600 - temperatures[rows][columns] * 17 - 5,
+        10);
+      } 
       else if (temperatures[rows][columns] < 15) // conditional statement to check if the temperature is less than 15
       {
         fill(134, 232, 82); // circle's color is green if mild weather (not too hot or cold)
+        ellipse(
+        100 + (rows + 1) * 45 + columns * 8,
+        600 - temperatures[rows][columns] *  17,
+        10,
+        10);
       }
       else if (temperatures[rows][columns] < 20) // conditional statement to check if the temperature is less than 20
       {
         fill(246, 250, 35); // circle's color is yellow if temperature is less than 20 but higher than 15
+        ellipse(
+        100 + (rows + 1) * 45 + columns * 8,
+        600 - temperatures[rows][columns] * 17,
+        10,
+        10);
       }
       else 
       {
         fill(234, 47, 14); // circle's color is red if temperature is more than 20 degrees
+        ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (temperatures[rows][columns] * 17), 10, 10); 
       }
-      ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (temperatures[rows][columns] * 17), 10, 10); // sorts the positioning of each data point
       
       // Check whether there is another temperature reading in the same day.
       // length - 1 gives the index of the last column (4 when there are 5 readings).
       if (columns < temperatures[rows].length - 1) 
       {
         stroke(255, 100, 50); // Orange-red line
+        strokeWeight(3); // Orange-red line thickness is 3
         line(
           // Starting X: positions the current temperature point horizontally.
           // 100 = starting offset; 45 = spacing for each day; 8 = spacing for each reading.
@@ -127,26 +197,33 @@ void draw()
     {
       if (feelsLikeTemperatures[rows][columns] < 10) // conditional statement to check if the temperature is less than 10
       {
-        fill(31, 179, 222); // circle's color is light blue if temperature is lower than 10
+        fill(31, 179, 222); // square's color is light blue if temperature is lower than 10
+        square(
+        100 + (rows + 1) * 45 + columns * 8 - 5,
+        600 - feelsLikeTemperatures[rows][columns] * 17 - 5,
+        10);
       }
       else if (feelsLikeTemperatures[rows][columns] < 15) // conditional statement to check if the temperature is less than 15
       {
-        fill(134, 232, 82); // circle's color is green if mild weather (not too hot or cold)
+        fill(21, 232, 22); // circle's color is green if mild weather (not too hot or cold)
+        ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (feelsLikeTemperatures[rows][columns] * 17), 10, 10);
       }
       else if (feelsLikeTemperatures[rows][columns] < 20) // conditional statement to check if the temperature is less than 20
       {
         fill(246, 250, 35); // circle's color is yellow if temperature is less than 20 but higher than 15
+        ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (feelsLikeTemperatures[rows][columns] * 17), 10, 10);
       }
       else 
       {
-        fill(234, 47, 14); // circle's color is red if temperature is more than 20 degrees
+        fill(234, 47, 14); // sun's color is red if temperature is more than 20 degrees 
+        ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (feelsLikeTemperatures[rows][columns] * 17), 10, 10); // sorts the positioning of each data point
+        
       }
-      ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (feelsLikeTemperatures[rows][columns] * 17), 10, 10); // sorts the positioning of each data point
       
       if (columns < feelsLikeTemperatures[rows].length - 1) // condition used to connect all temperature points
       {
         stroke(139, 92, 246); //Purple lines
-        
+        strokeWeight(3); // Thickness of purple line is 3
         line(
           // Starting X: horizontal position of the current reading. 
           // 100 = Starting offset, 45 = spacing between days,
