@@ -209,14 +209,25 @@ void draw()
       {
         fill(31, 179, 222); // square's color is light blue if temperature is lower than 10
         square(
-        100 + (rows + 1) * 45 + columns * 8 - 5,
-        600 - feelsLikeTemperatures[rows][columns] * 17 - 5,
-        10);
+           100 + (rows + 1) * 45 + columns * 8 - 5,
+           600 - feelsLikeTemperatures[rows][columns] * 17 - 5,
+           10
+        );
       }
       else if (feelsLikeTemperatures[rows][columns] < 15) // conditional statement to check if the temperature is less than 15
       {
         fill(21, 232, 22); // circle's color is green if mild weather (not too hot or cold)
-        ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (feelsLikeTemperatures[rows][columns] * 17), 10, 10);
+        triangle(
+          100 + (rows + 1) * 45 + columns * 8,
+          600 - feelsLikeTemperatures[rows][columns] * 17 - 7,
+
+          100 + (rows + 1) * 45 + columns * 8 - 7,
+          600 - feelsLikeTemperatures[rows][columns] * 17 + 7,
+
+          100 + (rows + 1) * 45 + columns * 8 + 7,
+          600 - feelsLikeTemperatures[rows][columns] * 17 + 7
+        );
+        
       }
       else if (feelsLikeTemperatures[rows][columns] < 20) // conditional statement to check if the temperature is less than 20
       {
