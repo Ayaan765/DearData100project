@@ -156,7 +156,11 @@ void draw()
       else 
       {
         fill(234, 47, 14); // circle's color is red if temperature is more than 20 degrees
-        ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (temperatures[rows][columns] * 17), 10, 10); 
+        rect(
+        100 + (rows + 1) * 45 + columns * 8 - 7,
+        600 - (temperatures[rows][columns]) * 17 - 4,
+        14,
+        10);
       }
       
       // Check whether there is another temperature reading in the same day.
@@ -237,7 +241,12 @@ void draw()
       else 
       {
         fill(234, 47, 14); // sun's color is red if temperature is more than 20 degrees 
-        ellipse(100 + (rows + 1) * 45 + columns * 8, 600 - (feelsLikeTemperatures[rows][columns] * 17), 10, 10); // sorts the positioning of each data point
+        rect(
+           100 + (rows + 1) * 45 + columns * 8 - 7,
+           600 - feelsLikeTemperatures[rows][columns] * 17 - 4,
+           14,
+           8
+         ); // sorts the positioning of each data point
         
       }
       
