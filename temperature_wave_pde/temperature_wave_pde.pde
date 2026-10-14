@@ -10,7 +10,8 @@ int[][] temperatures = {
 {13, 14, 15, 15, 14}, // Day 5
 {12, 15, 16, 15, 14}, // Day 6
 {13, 15, 16, 17, 17}, // Day 7
-{19, 19, 20, 19, 17}}; // Day 8
+{19, 19, 20, 19, 17}, // Day 8
+{10, 16, 19, 18, 16}}; // Day 9
 
 int[][] feelsLikeTemperatures = {
 {14, 16, 22, 20, 18}, // Day 1
@@ -20,7 +21,8 @@ int[][] feelsLikeTemperatures = {
 {12, 11, 14, 12, 10}, // Day 5
 {11, 15, 15, 16, 14}, // Day 6
 {13, 12, 13, 14, 17}, // Day 7
-{15, 17, 19, 17, 13}}; // Day 8
+{15, 17, 19, 17, 13}, // Day 8
+{11, 16, 17, 17, 15}}; // Day 9
 
 void setup()
 {
@@ -119,6 +121,8 @@ void draw()
   {
     for (int columns = 0; columns < temperatures[rows].length; columns = columns + 1) // an inner for loop to access each value from each column
     {
+      stroke(60);
+      strokeWeight(1.5);
       if (temperatures[rows][columns] < 10) // conditional statement to check if the temperature is less than 10
       {
         fill(31, 179, 222); // square's color is light blue if temperature is lower than 10
@@ -129,12 +133,16 @@ void draw()
       } 
       else if (temperatures[rows][columns] < 15) // conditional statement to check if the temperature is less than 15
       {
-        fill(134, 232, 82); // circle's color is green if mild weather (not too hot or cold)
-        ellipse(
+        fill(40, 170, 50); // triangle's color is green if mild weather (not too hot or cold)
+        triangle(
         100 + (rows + 1) * 45 + columns * 8,
-        600 - temperatures[rows][columns] *  17,
-        10,
-        10);
+        600 - temperatures[rows][columns] *  17 - 7,
+        
+        100 + (rows + 1) * 45 + columns * 8 - 7,
+        600 - temperatures[rows][columns] * 17 + 7,
+        
+        100 + (rows + 1) * 45 + columns * 8 + 7,
+        600 - temperatures[rows][columns] * 17 + 7);
       }
       else if (temperatures[rows][columns] < 20) // conditional statement to check if the temperature is less than 20
       {
@@ -156,7 +164,7 @@ void draw()
       if (columns < temperatures[rows].length - 1) 
       {
         stroke(255, 100, 50); // Orange-red line
-        strokeWeight(3); // Orange-red line thickness is 3
+        strokeWeight(2); // Orange-red line thickness is 2
         line(
           // Starting X: positions the current temperature point horizontally.
           // 100 = starting offset; 45 = spacing for each day; 8 = spacing for each reading.
@@ -195,6 +203,8 @@ void draw()
   {
     for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns = columns + 1) // an inner for loop to access each value from each column
     {
+      stroke(60);
+      strokeWeight(1.5);
       if (feelsLikeTemperatures[rows][columns] < 10) // conditional statement to check if the temperature is less than 10
       {
         fill(31, 179, 222); // square's color is light blue if temperature is lower than 10
