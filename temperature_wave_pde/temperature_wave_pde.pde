@@ -26,11 +26,28 @@ int[][] feelsLikeTemperatures = {
 
 PImage weather; // variable to declare an image
 
+import processing.sound.*;
+
+// Names of all sound files
+SoundFile wind;
+SoundFile birds;
+SoundFile nature;
+SoundFile crickets;
+
+// Variable to check if mouse was hovered over a temperature
+boolean wasHovering = false;
+int lastHoveredRow = -1;
+int lastHoveredColumn = -1;
+
 void setup()
 {
   size(1250, 800); // width is 1250 and height is 800 
   textSize(12); // Size of text
   weather = loadImage("Weather-icon.png"); // Loads the image onto the screen
+  wind = new SoundFile(this, "wind.mp3");
+  birds = new SoundFile(this, "birdschirping.mp3");
+  nature = new SoundFile(this, "nature-sounds.mp3");
+  crickets = new SoundFile(this, "summercrickets.mp3");
 }
 
 void draw()
@@ -107,6 +124,7 @@ void draw()
   text("Green: 10-14°C", 1030, 240); // Positioning of the key and text (Temperatures between 10-14) presenting the color of green
   text("Yellow: 15-19°C", 1030, 260); // Positioning of the key and text (Temperatures between 15-19) presenting the color of yellow
   text("Red: 20°C or above", 1030, 280); // Positioning of the key and text (Temperatures above or at 20) presenting the color of red
+  
   y = 600; // initial value of y
   for (temp = 0; temp < 35; temp = temp + 5) // a for loop is used to display values on the y axis
   {
@@ -134,6 +152,7 @@ void draw()
         100 + (rows + 1) * 45 + columns * 8 - 5,
         600 - temperatures[rows][columns] * 17 - 5,
         10);
+        
       } 
       else if (temperatures[rows][columns] < 15) // conditional statement to check if the temperature is less than 15
       {
@@ -289,6 +308,41 @@ void draw()
           100 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
           600 - feelsLikeTemperatures[rows + 1][0] * 17 // Grabs the temperature value of the next column. Scales it by 17 and flips it relative to the 600 pixel baseline.
         );
+      }
+    }
+  }
+}
+
+void mouseClicked()
+{
+  // Play a sound when the mouse is clicked on a temperature point.
+  for (int rows = 0; rows < temperatures.length; rows++)
+  {
+    for (int columns = 0; columns < temperatures[rows].length; columns++)
+    {
+      float pointX = 100 + (rows + 1) * 45 + columns * 8;
+      float pointY = 600 - temperatures[rows][columns] * 17;
+
+      if (dist(mouseX, mouseY, pointX, pointY) < 10)
+      {
+        if (temperatures[rows][columns] < 10)
+        {
+          wind.play();
+        }
+        else if (temperatures[rows][columns] < 15)
+        {
+          birds.play();
+        }
+        else if (temperatures[rows][columns] < 20)
+        {
+          nature.play();
+        }
+        else
+        {
+          crickets.play();
+        }
+
+        return;
       }
     }
   }
