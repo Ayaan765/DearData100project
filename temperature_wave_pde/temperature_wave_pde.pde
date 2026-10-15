@@ -24,10 +24,13 @@ int[][] feelsLikeTemperatures = {
 {15, 17, 19, 17, 13}, // Day 8
 {11, 16, 17, 17, 15}}; // Day 9
 
+PImage weather; // variable to declare an image
+
 void setup()
 {
   size(1250, 800); // width is 1250 and height is 800 
   textSize(12); // Size of text
+  weather = loadImage("Weather-icon.png"); // Loads the image onto the screen
 }
 
 void draw()
@@ -35,6 +38,7 @@ void draw()
   background(219, 169, 31); // Background color of orange
   noStroke(); // Removes the outline from the filled shape
   fill(255, 100, 50, 150); // Transparent orange-red fill
+  image(weather, 675, 10, 150, 50); // Size and positioning of image 
   
   beginShape();
 
