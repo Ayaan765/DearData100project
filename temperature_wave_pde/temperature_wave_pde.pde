@@ -11,7 +11,8 @@ int[][] temperatures = {
 {12, 15, 16, 15, 14}, // Day 6
 {13, 15, 16, 17, 17}, // Day 7
 {19, 19, 20, 19, 17}, // Day 8
-{10, 16, 19, 18, 16}}; // Day 9
+{10, 16, 19, 18, 16}, // Day 9
+{18, 20, 20, 21, 19}}; // Day 10
 
 int[][] feelsLikeTemperatures = {
 {14, 16, 22, 20, 18}, // Day 1
@@ -22,7 +23,8 @@ int[][] feelsLikeTemperatures = {
 {11, 15, 15, 16, 14}, // Day 6
 {13, 12, 13, 14, 17}, // Day 7
 {15, 17, 19, 17, 13}, // Day 8
-{11, 16, 17, 17, 15}}; // Day 9
+{11, 16, 17, 17, 15}, // Day 9
+{18, 20, 20, 21, 19}}; // Day 10
 
 PImage weather; // variable to declare an image
 
