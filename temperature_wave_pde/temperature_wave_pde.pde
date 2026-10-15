@@ -346,4 +346,36 @@ void mouseClicked()
       }
     }
   }
+
+  // Play a sound when the mouse is clicked on a feelsLiketemperature point.
+  for (int rows = 0; rows < feelsLikeTemperatures.length; rows++)
+  {
+    for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns++)
+    {
+      float pointX = 100 + (rows + 1) * 45 + columns * 8;
+      float pointY = 600 - feelsLikeTemperatures[rows][columns] * 17;
+
+      if (dist(mouseX, mouseY, pointX, pointY) < 10)
+      {
+        if (feelsLikeTemperatures[rows][columns] < 10)
+        {
+          wind.play();
+        }
+        else if (feelsLikeTemperatures[rows][columns] < 15)
+        {
+          birds.play();
+        }
+        else if (feelsLikeTemperatures[rows][columns] < 20)
+        {
+          nature.play();
+        }
+        else
+        {
+          crickets.play();
+        }
+
+        return;
+      }
+    }
+  }
 }
