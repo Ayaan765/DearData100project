@@ -119,7 +119,7 @@ void draw()
   line(100, 80, 100, 600); // Vertical line (Y-Axis)
   text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
   line(100, 600, 1010, 600); // Horizontal line (X-Axis)
-  text("Time/Day", 525, 675); // Positioning of the x-axis label (Time/Day)
+  text("Day", 525, 675); // Positioning of the x-axis label (Day)
   text("TEMPERATURE WAVE", 500, 50); // Positioning of graph title
   text("KEY", 1030, 150); // Positioning of the Keys title
   text("Orange-red line = Actual temperature", 1030, 180); // Positioning of the key ('Actual temperature') description of the orange-red line meaning
