@@ -12,7 +12,8 @@ int[][] temperatures = {
 {13, 15, 16, 17, 17}, // Day 7
 {19, 19, 20, 19, 17}, // Day 8
 {10, 16, 19, 18, 16}, // Day 9
-{18, 20, 20, 21, 19}}; // Day 10
+{18, 20, 20, 21, 19}, // Day 10
+{14, 12, 15, 15, 12}}; // Day 11
 
 int[][] feelsLikeTemperatures = {
 {14, 16, 22, 20, 18}, // Day 1
@@ -24,7 +25,8 @@ int[][] feelsLikeTemperatures = {
 {13, 12, 13, 14, 17}, // Day 7
 {15, 17, 19, 17, 13}, // Day 8
 {11, 16, 17, 17, 15}, // Day 9
-{18, 20, 20, 21, 19}}; // Day 10
+{16, 17, 17, 19, 18}, // Day 10
+{12, 11, 14, 13, 10}}; // Day 11
 
 PImage weather; // variable to declare an image
 
@@ -317,7 +319,7 @@ void draw()
 
 void mouseClicked()
 {
-  // Play a sound when the mouse is clicked on a temperature point.
+  // Play a sound when the mouse is clicked on an actual temperature point.
   for (int rows = 0; rows < temperatures.length; rows++)
   {
     for (int columns = 0; columns < temperatures[rows].length; columns++)
@@ -348,7 +350,7 @@ void mouseClicked()
       }
     }
   }
-
+  
   // Play a sound when the mouse is clicked on a feelsLiketemperature point.
   for (int rows = 0; rows < feelsLikeTemperatures.length; rows++)
   {
