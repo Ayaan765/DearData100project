@@ -317,6 +317,15 @@ void draw()
   }
 }
 
+// Function used to prevent sounds from overlapping
+void stopAllSounds() 
+{
+  wind.stop();
+  rain.stop();
+  cloudy.stop();
+  hot.stop();
+}
+
 void mouseClicked()
 {
   // Play a sound when the mouse is clicked on an actual temperature point.
@@ -329,6 +338,8 @@ void mouseClicked()
 
       if (dist(mouseX, mouseY, pointX, pointY) < 10)
       {
+        stopAllSounds();
+        
         if (temperatures[rows][columns] < 10)
         {
           wind.play();
@@ -361,6 +372,8 @@ void mouseClicked()
 
       if (dist(mouseX, mouseY, pointX, pointY) < 10)
       {
+        stopAllSounds();
+        
         if (feelsLikeTemperatures[rows][columns] < 10)
         {
           wind.play();
