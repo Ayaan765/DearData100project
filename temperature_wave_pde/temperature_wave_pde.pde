@@ -34,9 +34,9 @@ import processing.sound.*;
 
 // Names of all sound files
 SoundFile wind;
-SoundFile birds;
-SoundFile nature;
-SoundFile crickets;
+SoundFile rain;
+SoundFile cloudy;
+SoundFile hot;
 
 // Variable to check if mouse was hovered over a temperature
 boolean wasHovering = false;
@@ -49,9 +49,9 @@ void setup()
   textSize(12); // Size of text
   weather = loadImage("Weather-icon.png"); // Loads the image onto the screen
   wind = new SoundFile(this, "wind.mp3");
-  birds = new SoundFile(this, "birdschirping.mp3");
-  nature = new SoundFile(this, "nature-sounds.mp3");
-  crickets = new SoundFile(this, "summercrickets.mp3");
+  rain = new SoundFile(this, "rain.mp3");
+  cloudy = new SoundFile(this, "cloudy.mp3");
+  hot = new SoundFile(this, "hot.mp3");
 }
 
 void draw()
@@ -335,15 +335,15 @@ void mouseClicked()
         }
         else if (temperatures[rows][columns] < 15)
         {
-          birds.play();
+          rain.play();
         }
         else if (temperatures[rows][columns] < 20)
         {
-          nature.play();
+          cloudy.play();
         }
         else
         {
-          crickets.play();
+          hot.play();
         }
 
         return;
@@ -367,15 +367,15 @@ void mouseClicked()
         }
         else if (feelsLikeTemperatures[rows][columns] < 15)
         {
-          birds.play();
+          rain.play();
         }
         else if (feelsLikeTemperatures[rows][columns] < 20)
         {
-          nature.play();
+          cloudy.play();
         }
         else
         {
-          crickets.play();
+          hot.play();
         }
 
         return;
