@@ -14,8 +14,9 @@ int[][] temperatures = {
   {19, 19, 20, 19, 17}, // Day 8
   {10, 16, 19, 18, 16}, // Day 9
   {18, 20, 20, 21, 19}, // Day 10
-  {14, 12, 15, 15, 12}
-}; // Day 11
+  {14, 12, 15, 15, 12}, // Day 11
+  {8, 13, 14, 14, 11}, // Day 12
+  {8, 11, 14, 14}}; // Day 13
 
 int[][] feelsLikeTemperatures = {
   {14, 16, 22, 20, 18}, // Day 1
@@ -28,8 +29,9 @@ int[][] feelsLikeTemperatures = {
   {15, 17, 19, 17, 13}, // Day 8
   {11, 16, 17, 17, 15}, // Day 9
   {16, 17, 17, 19, 18}, // Day 10
-  {12, 11, 14, 13, 10}
-}; // Day 11
+  {12, 11, 14, 13, 10}, // Day 11
+  {9, 12, 11, 10, 10}, // Day 12
+  {6, 11, 11, 9}}; // Day 13
 
 PImage weather; // variable to declare an image
 
@@ -189,6 +191,8 @@ void draw()
       // && means BOTH conditions must be true.
       if (columns == temperatures[rows].length - 1 && rows < temperatures.length - 1) // condition used to move from one day to another
       {
+        stroke(255, 100, 50); // Orange-red line
+        strokeWeight(2);
         line(
           100 + (rows + 1) * 45 + columns * 8, // Starting X: horizontal position of the current day's last reading.
           600 - temperatures[rows][columns] * 17, // Starting Y: vertical position of the current day's last temperature.
@@ -217,8 +221,8 @@ void draw()
 
       if (columns < feelsLikeTemperatures[rows].length - 1) // condition used to connect all temperature points
       {
-        stroke(139, 92, 246); //Purple lines
-        strokeWeight(3); // Thickness of purple line is 3
+        stroke(139, 92, 246); // Purple line
+        strokeWeight(3);  // Purple line thickness
         line(
           // Starting X: horizontal position of the current reading.
           // 100 = Starting offset, 45 = spacing between days,
@@ -244,6 +248,8 @@ void draw()
       // && means BOTH conditions must be true.
       if (columns == feelsLikeTemperatures[rows].length - 1 && rows < feelsLikeTemperatures.length - 1) // condition used to move from one day to another
       {
+        stroke(139, 92, 246); // Purple line
+        strokeWeight(3);
         line(
           100 + (rows + 1) * 45 + columns * 8, // Calculates the horizontal (X) pixel position. Starts at a base offset of 100 pixels. Shifts right (row) by 45 pixels and further shifts right (column) by 8 pixels.
           600 - feelsLikeTemperatures[rows][columns] * 17, // Calculates the vertical (Y) pixel position. Higher temperatures are higher on the screen. Each degree of temperature is scaled by 17 pixels.
