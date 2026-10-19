@@ -16,7 +16,7 @@ int[][] temperatures = {
   {18, 20, 20, 21, 19}, // Day 10
   {14, 12, 15, 15, 12}, // Day 11
   {8, 13, 14, 14, 11}, // Day 12
-  {8, 11, 14, 14}}; // Day 13
+  {8, 11, 14, 14, 12}}; // Day 13
 
 int[][] feelsLikeTemperatures = {
   {14, 16, 22, 20, 18}, // Day 1
@@ -31,7 +31,7 @@ int[][] feelsLikeTemperatures = {
   {16, 17, 17, 19, 18}, // Day 10
   {12, 11, 14, 13, 10}, // Day 11
   {9, 12, 11, 10, 10}, // Day 12
-  {6, 11, 11, 9}}; // Day 13
+  {6, 11, 11, 9, 8}}; // Day 13
 
 PImage weather; // variable to declare an image
 
@@ -61,15 +61,15 @@ void setup()
 
 void draw()
 {
-  background(219, 169, 31); // Background color of orange
+  background(35, 22, 52); // Deep dusk-purple background
   noStroke(); // Removes the outline from the filled shape
-  fill(255, 100, 50, 150); // Transparent orange-red fill
+  fill(255, 112, 82, 180); // Warm coral sunset wave
   image(weather, 675, 10, 150, 50); // Size and positioning of image
-
-  beginShape();
+  
+  beginShape(); // Creates the mountainous waves
 
   // Start at the bottom of the graph
-  vertex(145, 600);
+  vertex(100, 600);
 
   // Follow every actual temperature reading
   for (int rows = 0; rows < temperatures.length; rows = rows + 1)
@@ -77,7 +77,7 @@ void draw()
     for (int columns = 0; columns < temperatures[rows].length; columns = columns + 1)
     {
       vertex(
-        100 + (rows + 1) * 45 + columns * 8,
+        55 + (rows + 1) * 45 + columns * 8,
         600 - temperatures[rows][columns] * 17
       );
     }
@@ -85,18 +85,18 @@ void draw()
 
   // Return to the bottom at the final reading
   vertex(
-    100 + temperatures.length * 45
+    55 + temperatures.length * 45
     + (temperatures[temperatures.length - 1].length - 1) * 8,
     600
   );
 
   endShape(CLOSE);
 
-  fill(132, 92, 246, 50); // color of mountain
+  fill(164, 116, 255, 100); // color of mountain
   beginShape();
 
   // Start at the bottom of the graph
-  vertex(145, 600);
+  vertex(100, 600);
 
   // Follow every actual temperature reading
   for (int rows = 0; rows < feelsLikeTemperatures.length; rows = rows + 1)
@@ -104,7 +104,7 @@ void draw()
     for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns = columns + 1)
     {
       vertex(
-        100 + (rows + 1) * 45 + columns * 8,
+        55 + (rows + 1) * 45 + columns * 8,
         600 - feelsLikeTemperatures[rows][columns] * 17
       );
     }
@@ -112,7 +112,7 @@ void draw()
 
   // Return to the bottom at the final reading
   vertex(
-    100 + feelsLikeTemperatures.length * 45
+    55 + feelsLikeTemperatures.length * 45
     + (feelsLikeTemperatures[feelsLikeTemperatures.length - 1].length - 1) * 8,
     600
   );
@@ -123,10 +123,13 @@ void draw()
   fill(255, 255, 255); // labels are colored white
   line(100, 80, 100, 600); // Vertical line (Y-Axis)
   text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
-  line(100, 600, 1010, 600); // Horizontal line (X-Axis)
+  line(100, 600, 1060, 600); // Horizontal line (X-Axis)
   text("Day", 525, 675); // Positioning of the x-axis label (Day)
-  text("TEMPERATURE WAVE", 500, 50); // Positioning of graph title
-  text("KEY", 1030, 150); // Positioning of the Keys title
+  textSize(25);
+  fill(255, 205, 160); // Soft sunset-peach text
+  text("TEMPERATURE WAVE", 400, 55); // Positioning of the text 
+  textSize(12); // Restore the normal size for labels
+  text("KEY", 1090, 150); // Positioning of the Keys title
   text("Orange-red line = Actual temperature", 1030, 180); // Positioning of the key ('Actual temperature') description of the orange-red line meaning
   text("Purple line = Feels-like temperature", 1030, 200); // Positioning of the key ('Feels like temperature') description of the purple line meaning
   text("Blue: below 10°C", 1030, 220); // Positioning of the key and text (Lower temperatures) presenting the color of blue
@@ -141,10 +144,10 @@ void draw()
     y = y - 85; // spacing between the temperatures on the y axis
   }
 
-  x = 100; // initial value of x
-  for (days = 0; days < 21; days = days + 1) // a for loop is used to display values on the x axis
+  x = 55; // initial value of x
+  for (days = 1; days <= 20; days = days + 1) // a for loop is used to display values on the x axis
   {
-    text(days, x, 625); // positioning of storing each value (0-20)
+    text(days, 55 + days * 45, 625); // positioning of storing each value (0-20)
     x = x + 45; // spacing between the numbers on x axis
   }
 
@@ -155,7 +158,7 @@ void draw()
     {
       TemperaturePoint point = new TemperaturePoint(
         temperatures[rows][columns],
-        100 + (rows + 1) * 45 + columns * 8,
+        55 + (rows + 1) * 45 + columns * 8,
         600 - temperatures[rows][columns] * 17,
         false
       );
@@ -170,8 +173,8 @@ void draw()
         strokeWeight(2); // Orange-red line thickness is 2
         line(
           // Starting X: positions the current temperature point horizontally.
-          // 100 = starting offset; 45 = spacing for each day; 8 = spacing for each reading.
-          100 + (rows + 1) * 45 + columns * 8,
+          // 55 = starting offset; 45 = spacing for each day; 8 = spacing for each reading.
+          55 + (rows + 1) * 45 + columns * 8,
 
           // Starting Y: converts the current temperature into a screen position.
           // 600 = vertical baseline; 17 = pixels used for each degree.
@@ -179,7 +182,7 @@ void draw()
 
           // Ending X: calculates the horizontal position of the NEXT reading.
           // columns + 1 moves to the next column within the same day.
-          100 + (rows + 1) * 45 + (columns + 1) * 8,
+          55 + (rows + 1) * 45 + (columns + 1) * 8,
 
           // Ending Y: uses the temperature in the next column as the line's endpoint.
           600 - temperatures[rows][columns + 1] * 17
@@ -194,9 +197,9 @@ void draw()
         stroke(255, 100, 50); // Orange-red line
         strokeWeight(2);
         line(
-          100 + (rows + 1) * 45 + columns * 8, // Starting X: horizontal position of the current day's last reading.
+          55 + (rows + 1) * 45 + columns * 8, // Starting X: horizontal position of the current day's last reading.
           600 - temperatures[rows][columns] * 17, // Starting Y: vertical position of the current day's last temperature.
-          100 + (rows + 2) * 45, // Ending X: horizontal position for the first reading of the next day.
+          55 + (rows + 2) * 45, // Ending X: horizontal position for the first reading of the next day.
           // rows + 2 moves the position forward to the next day.
           600 - temperatures[rows + 1][0] * 17 // Ending Y: vertical position of the next day's first temperature.
           // rows + 1 selects the next row; [0] selects its first reading.
@@ -212,7 +215,7 @@ void draw()
     {
       TemperaturePoint point = new TemperaturePoint(
         feelsLikeTemperatures[rows][columns],
-        100 + (rows + 1) * 45 + columns * 8,
+        55 + (rows + 1) * 45 + columns * 8,
         600 - feelsLikeTemperatures[rows][columns] * 17,
         true
       );
@@ -227,7 +230,7 @@ void draw()
           // Starting X: horizontal position of the current reading.
           // 100 = Starting offset, 45 = spacing between days,
           // 8 = spacing between readings within the day.
-          100 + (rows + 1) * 45 + columns * 8,
+          55 + (rows + 1) * 45 + columns * 8,
 
           // Starting Y: vertical position of the current feels-like temperature
           // 600 = baseline of the graph; 17 = pixels per degree.
@@ -235,7 +238,7 @@ void draw()
 
           // Ending X: horizontal position of the NEXT reading
           // columns + 1 selects the next reading within the same day
-          100 + (rows + 1) * 45 + (columns + 1) * 8,
+          55 + (rows + 1) * 45 + (columns + 1) * 8,
 
           // Ending Y: vertical position of the next feels-like temperature.
           // [rows][columns + 1] accesses the next reading in the same day.
@@ -251,9 +254,9 @@ void draw()
         stroke(139, 92, 246); // Purple line
         strokeWeight(3);
         line(
-          100 + (rows + 1) * 45 + columns * 8, // Calculates the horizontal (X) pixel position. Starts at a base offset of 100 pixels. Shifts right (row) by 45 pixels and further shifts right (column) by 8 pixels.
+          55 + (rows + 1) * 45 + columns * 8, // Calculates the horizontal (X) pixel position. Starts at a base offset of 100 pixels. Shifts right (row) by 45 pixels and further shifts right (column) by 8 pixels.
           600 - feelsLikeTemperatures[rows][columns] * 17, // Calculates the vertical (Y) pixel position. Higher temperatures are higher on the screen. Each degree of temperature is scaled by 17 pixels.
-          100 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
+          55 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
           600 - feelsLikeTemperatures[rows + 1][0] * 17 // Grabs the temperature value of the next column. Scales it by 17 and flips it relative to the 600 pixel baseline.
         );
       }
@@ -277,7 +280,7 @@ void mouseClicked()
   {
     for (int columns = 0; columns < temperatures[rows].length; columns++)
     {
-      float pointX = 100 + (rows + 1) * 45 + columns * 8;
+      float pointX = 55 + (rows + 1) * 45 + columns * 8;
       float pointY = 600 - temperatures[rows][columns] * 17;
 
       if (dist(mouseX, mouseY, pointX, pointY) < 10)
@@ -311,7 +314,7 @@ void mouseClicked()
   {
     for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns++)
     {
-      float pointX = 100 + (rows + 1) * 45 + columns * 8;
+      float pointX = 55 + (rows + 1) * 45 + columns * 8;
       float pointY = 600 - feelsLikeTemperatures[rows][columns] * 17;
 
       if (dist(mouseX, mouseY, pointX, pointY) < 10)
