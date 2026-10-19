@@ -63,6 +63,14 @@ void draw()
 {
   background(35, 22, 52); // Deep dusk-purple background
   noStroke(); // Removes the outline from the filled shape
+  
+  // Draw a soft glow behind the sun
+  fill(255, 140, 70, 45); 
+  ellipse(1100, 70, 100, 100);
+  
+  // Draw the sun itself 
+  fill(255, 180, 100, 180); 
+  noStroke(); // Removes the outline from the filled shape
   fill(255, 112, 82, 180); // Warm coral sunset wave
   image(weather, 675, 10, 150, 50); // Size and positioning of image
   
@@ -120,7 +128,7 @@ void draw()
   endShape(CLOSE);
 
   stroke(255); // White lines for the axes
-  fill(255, 255, 255); // labels are colored white
+  fill(255, 205, 160); // labels are colored sunset-peached
   line(100, 80, 100, 600); // Vertical line (Y-Axis)
   text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
   line(100, 600, 1060, 600); // Horizontal line (X-Axis)
@@ -129,9 +137,15 @@ void draw()
   fill(255, 205, 160); // Soft sunset-peach text
   text("TEMPERATURE WAVE", 400, 55); // Positioning of the text 
   textSize(12); // Restore the normal size for labels
-  text("KEY", 1090, 150); // Positioning of the Keys title
-  text("Orange-red line = Actual temperature", 1030, 180); // Positioning of the key ('Actual temperature') description of the orange-red line meaning
-  text("Purple line = Feels-like temperature", 1030, 200); // Positioning of the key ('Feels like temperature') description of the purple line meaning
+  fill(255, 205, 160);
+  textSize(18);
+  text("WEATHER KEY", 1030, 150); // Positioning of the Keys title
+  textSize(12);
+  fill(255);
+  text("Orange-red: Actual temperature", 1030, 180); // Positioning of the key ('Actual temperature') description of the orange-red line meaning
+  text("Purple: Feels-like temperature", 1030, 200); // Positioning of the key ('Feels like temperature') description of the purple line meaning
+  
+  // Temperature ranges
   text("Blue: below 10°C", 1030, 220); // Positioning of the key and text (Lower temperatures) presenting the color of blue
   text("Green: 10-14°C", 1030, 240); // Positioning of the key and text (Temperatures between 10-14) presenting the color of green
   text("Yellow: 15-19°C", 1030, 260); // Positioning of the key and text (Temperatures between 15-19) presenting the color of yellow
@@ -364,7 +378,7 @@ class TemperaturePoint
   // Function used to display each temperature point
   void display()
   {
-    stroke(60);
+    stroke(255, 230, 210); // Soft peach outline to match the sunset theme
     strokeWeight(1.5);
 
     if (temperature < 10) // conditional statement to check if the temperature is less than 10
