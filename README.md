@@ -6,31 +6,31 @@ The project involves recording the temperatures that I experience each time I go
 
 Research Question
 
-What happens to the temperature every time I go outside over a period of 20 days?
+What happens to the temperature every time I go for a walk outside over a period of 20 days?
 
 Data Collection
 
-Every time I went out I noted down the temperature with the aim of gathering at least 100 observations. Each observation corresponds to the temperature at the time when I went outside.
+Every time I went out I noted down the temperature with the aim of gathering at least 100 observations. Each observation corresponds to the temperature at the time when I went outside. There are 5 observations per day.
 
-The data sets the date, time and temperature which were recorded during each observation.
+The data sets the date, time, temperature, the temperature that we feel and the weather condition outside which were recorded during each observation.
 
 SCAMPER Design Process
 
 S — Substitute
 
-I decided to use a continuous wave rather than a traditional graph in order to present my temperature observations in a more creative manner.
+I decided to use two continuous waves (one for the temperature that we feel and  rather than a traditional graph in order to present my temperature observations in a more creative manner.
 
 C — Combine
 
-To make the data more visually interesting, I combined the wave with colours, points and temperature labels.
+To make the data more visually interesting, I combined the wave with colours, shapes, points, temperature labels, images and sound.
 
 A — Adapt
 
-I shaped the design to resemble a flowing wave in order to show how the temperature changes every time I go outside.
+I shaped the design to resemble two flowing waves in order to show how the temperature changes every time I go outside.
 
 M — Modify
 
-I changed the colours and appearance of the wave to show the differences caused by colder and warmer temperatures.
+I changed the colours and appearance of the waves as well as the shapes to show the differences caused by colder and warmer temperatures.
 
 P — Put to Another Use
 
