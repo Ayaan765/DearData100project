@@ -38,7 +38,7 @@ I created a visual record of the temperatures I came across by drawing on the ev
 
 E — Eliminate
 
-I got rid of the unnecessary visual elements so that attention could remain on the temperature observations and the wave.
+I got rid of the unnecessary visual elements such as the time and location of when and where it happened so that attention could remain on the temperature observations and the wave.
 
 R — Reverse / Rearrange
 
