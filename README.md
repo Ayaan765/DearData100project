@@ -18,7 +18,7 @@ SCAMPER Design Process
 
 S — Substitute
 
-I decided to use two continuous waves (one for the temperature that we feel and  rather than a traditional graph in order to present my temperature observations in a more creative manner.
+I decided to use two continuous waves (one for the temperature that we feel and one for the actual temperature), rather than a traditional graph in order to present my temperature observations in a more creative manner.
 
 C — Combine
 
