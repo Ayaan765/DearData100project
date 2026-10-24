@@ -30,7 +30,7 @@ I shaped the design to resemble two flowing waves in order to show how the tempe
 
 M — Modify
 
-I changed the colours and appearance of the waves as well as the shapes to show the differences caused by colder and warmer temperatures.
+I changed the colours and appearance of the waves as well as the shapes to show the differences caused by colder and warmer temperatures. I added different sounds for certain temperatures to present the atmosphere at different degree levels.
 
 P — Put to Another Use
 
