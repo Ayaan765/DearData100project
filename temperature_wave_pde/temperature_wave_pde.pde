@@ -3,6 +3,11 @@ int y; // y is used to display the position of the numbers on the y axis
 int days; // days is used to store the numbers on the x axis
 int x; // x is used to display the position of the numbers on the x axis
 
+int temp; // temperature is used as a variable to store a value or more
+int y; // y is used to display the position of the numbers on the y axis
+int days; // days is used to store the numbers on the x axis
+int x; // x is used to display the position of the numbers on the x axis
+
 int[][] temperatures = {
   {14, 16, 20, 21, 18}, // Day 1
   {15, 13, 13, 11, 11}, // Day 2
@@ -17,7 +22,12 @@ int[][] temperatures = {
   {14, 12, 15, 15, 12}, // Day 11
   {8, 13, 14, 14, 11}, // Day 12
   {8, 11, 14, 14, 12}, // Day 13
-  {10, 13, 14, 14, 12}}; // Day 14
+  {10, 13, 14, 14, 12}, // Day 14
+  {13, 13, 13, 12, 12}, // Day 15
+  {11, 10, 10, 10, 10}, // Day 16
+  {12, 14, 15, 14, 13}, // Day 17
+  {12, 12, 13, 12, 10}, // Day 18
+  {11, 12, 12, 13, 15}}; // Day 19 
   
 int[][] feelsLikeTemperatures = {
   {14, 16, 22, 20, 18}, // Day 1
@@ -33,7 +43,12 @@ int[][] feelsLikeTemperatures = {
   {12, 11, 14, 13, 10}, // Day 11
   {9, 12, 11, 10, 10}, // Day 12
   {6, 11, 11, 9, 8}, // Day 13
-  {12, 13, 11, 12, 12}}; // Day 14
+  {12, 13, 11, 12, 12}, // Day 14
+  {9, 9, 10, 12, 13}, // Day 15
+  {4, 5, 6, 7, 4}, // Day 16
+  {10, 11, 12, 13, 12}, // Day 17
+  {9, 11, 10, 5, 2}, // Day 18
+  {9, 9, 6, 9, 11}}; // Day 19
 
 PImage weather; // variable to declare an image
 
