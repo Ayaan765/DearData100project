@@ -404,11 +404,11 @@ class TemperaturePoint
     {
       if (feelsLike)
       {
-        fill(21, 232, 22); // circle's color is green if mild weather (not too hot or cold)
+        fill(52,255, 110); // triangle's color is green if mild weather (not too hot or cold)
       }
       else
       {
-        fill(40, 170, 50); // triangle's color is green if mild weather (not too hot or cold)
+        fill(52, 255, 110); // triangle's color is green if mild weather (not too hot or cold)
       }
 
       triangle(
