@@ -302,17 +302,19 @@ void draw()
         fill(255); // Colour of the text
         textSize(16); // Size of the text
         
-        // Each temperature point will show the day and actual temperature of it
-        text("Day: " + (rows + 1), mouseX + 15, mouseY - 20);
+        // Each temperature point will show the day and actual temperature of it in the middle of the sketch
+        textAlign(CENTER);
+        
+        text("Day: " + (rows + 1), 600, 300);
         text("Actual Temperature: " + temperatures[rows][columns] + "°C",
-             mouseX + 15, mouseY);
+             600, 320);
       }
     }
   }
   
   // Detect when a mouse hovers over a certain temperature point
   for (int rows = 0; rows < feelsLikeTemperatures.length; rows++) {
-    for (int columns = 0; columns < feelsLikeTemperatures.length; columns++) {
+    for (int columns = 0; columns < feelsLikeTemperatures[rows].length; columns++) {
       float pointX = 55 + (rows + 1) * 45 + columns * 8;
       float pointY = 600 - feelsLikeTemperatures[rows][columns] * 17;
       
@@ -322,9 +324,9 @@ void draw()
         textSize(16); // Size of the text
         
         // Each temperature point will show the day and their feels like temperature
-        text("Day: " + (rows + 1), mouseX + 15, mouseY - 20);
+        text("Day: " + (rows + 1), 600, 220);
         text("Feels like Temperature: " + feelsLikeTemperatures[rows][columns] + "°C", 
-             mouseX + 15, mouseY);
+             600, 200);
       }
     }
   }
