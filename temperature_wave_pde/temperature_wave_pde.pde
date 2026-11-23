@@ -79,11 +79,11 @@ void draw()
   noStroke(); // Removes the outline from the filled shape
   
   // Draw a soft glow behind the sun
-  fill(255, 140, 70, 45); 
+  fill(235, 255, 10, 45); 
   ellipse(1100, 70, 100, 100);
   
   // Draw the sun itself 
-  fill(255, 180, 100, 180); 
+  fill(235, 255, 10, 180); 
   noStroke(); // Removes the outline from the filled shape
   fill(255, 112, 82, 180); // Warm coral sunset wave
   image(weather, 675, 10, 150, 50); // Size and positioning of image
@@ -114,7 +114,7 @@ void draw()
 
   endShape(CLOSE);
 
-  fill(164, 116, 255, 100); // color of mountain
+  fill(164, 116, 255, 100); // color of purple mountain
   beginShape();
 
   // Start at the bottom of the graph
@@ -287,6 +287,24 @@ void draw()
           55 + (rows + 2) * 45, // Horizontal position of the next data point. Moves the line forward to the next row and continues onto the next column.
           600 - feelsLikeTemperatures[rows + 1][0] * 17 // Grabs the temperature value of the next column. Scales it by 17 and flips it relative to the 600 pixel baseline.
         );
+      }
+    }
+  }
+  
+  // Detect when the mouse hovers over a certain temperature point
+  for (int rows = 0; rows < temperatures.length; rows++) {
+    for (int columns = 0; columns < temperatures[rows].length; columns++) {
+      float pointX = 55 + (rows + 1) * 45 + columns * 8;
+      float pointY = 600 - temperatures[rows][columns] * 17;
+      
+      // Display the data of the temperature point hovered by the mouse, along with the size and color of text
+      if (dist(mouseX, mouseY, pointX, pointY) < 10) {
+        fill(255); // Colour of the text
+        textSize(16); // Size of the text
+        
+        text("Day: " + (rows + 1), mouseX + 15, mouseY - 20);
+        text("Temperature: " + temperatures[rows][columns] + "°C",
+             mouseX + 15, mouseY);
       }
     }
   }
