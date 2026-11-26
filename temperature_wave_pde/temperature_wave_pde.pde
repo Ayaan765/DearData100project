@@ -64,7 +64,7 @@ int lastHoveredColumn = -1;
 
 void setup()
 {
-  size(1250, 800); // width is 1250 and height is 800
+  size(1300, 900); // width is 1300 and height is 900
   textSize(12); // Size of text
   weather = loadImage("Weather-icon.png"); // Loads the image onto the screen
   wind = new SoundFile(this, "wind.mp3");
@@ -144,7 +144,7 @@ void draw()
   stroke(255); // White lines for the axes
   fill(255, 205, 160); // labels are colored sunset-peached
   line(100, 80, 100, 600); // Vertical line (Y-Axis)
-  text("Temperature", 5, 400); // Positioning of the y-axis label (Temperature)
+  text("Temperature", 36, 400); // Positioning of the y-axis label (Temperature)
   line(100, 600, 1060, 600); // Horizontal line (X-Axis)
   text("Day", 525, 675); // Positioning of the x-axis label (Day)
   textSize(25);
@@ -152,18 +152,70 @@ void draw()
   text("TEMPERATURE WAVE", 400, 55); // Positioning of the text 
   textSize(12); // Restore the normal size for labels
   fill(255, 205, 160);
-  textSize(18);
-  text("WEATHER KEY", 1030, 150); // Positioning of the Keys title
-  textSize(12);
-  fill(255);
-  text("Orange-red: Actual temperature", 1030, 180); // Positioning of the key ('Actual temperature') description of the orange-red line meaning
-  text("Purple: Feels-like temperature", 1030, 200); // Positioning of the key ('Feels like temperature') description of the purple line meaning
   
+  // Creating the weather key 
+  // Weather key background
+  noStroke();
+  fill(50, 35, 70);
+  rect(1080, 140, 210, 240, 15);
+
+  // Weather key heading
+  fill(255, 205, 160);
+  textSize(20);
+  textAlign(LEFT);
+  text("WEATHER KEY", 1095, 170);
+
+  // Actual temperature
+  stroke(255, 100, 50);
+  strokeWeight(4);
+  line(1095, 195, 1125, 195);
+
+  noStroke();
+  fill(255);
+  textSize(13);
+  text("Actual temperature", 1135, 200);
+
+  // Feels-like temperature
+  stroke(139, 92, 246);
+  strokeWeight(4);
+  line(1095, 225, 1125, 225);
+
+  noStroke();
+  fill(255);
+  text("Feels-like temperature", 1135, 230);
+
   // Temperature ranges
-  text("Blue: below 10°C", 1030, 220); // Positioning of the key and text (Lower temperatures) presenting the color of blue
-  text("Green: 10-14°C", 1030, 240); // Positioning of the key and text (Temperatures between 10-14) presenting the color of green
-  text("Yellow: 15-19°C", 1030, 260); // Positioning of the key and text (Temperatures between 15-19) presenting the color of yellow
-  text("Red: 20°C or above", 1030, 280); // Positioning of the key and text (Temperatures above or at 20) presenting the color of red
+  fill(255, 205, 160);
+  textSize(15);
+  text("Temperature ranges", 1095, 265);
+
+  // Blue - Square
+  fill(57, 155, 255);
+  rectMode(CENTER);
+  square(1105, 290, 10);
+  fill(255);
+  textSize(12);
+  text("Below 10°C", 1125, 294);
+
+  // Green - Triangle
+  fill(53, 201, 121);
+  triangle(1105, 309, 1099, 319, 1111, 319);
+  fill(255);
+  text("10-14°C", 1125, 319);
+
+  // Yellow - Circle
+  fill(245, 213, 71);
+  ellipse(1105, 340, 10, 10);
+  fill(255);
+  text("15-19°C", 1125, 344);
+
+  // Red - Rectangle
+  fill(255, 81, 72);
+  rect(1105, 365, 10, 10);
+  fill(255);
+  text("20°C or above", 1125, 369);
+  
+  rectMode(CORNER);
 
   y = 600; // initial value of y
   for (temp = 0; temp < 35; temp = temp + 5) // a for loop is used to display values on the y axis
@@ -302,8 +354,11 @@ void draw()
         fill(255); // Colour of the text
         textSize(16); // Size of the text
         
-        // Each temperature point will show the day and actual temperature of it in the middle of the sketch
-        textAlign(CENTER);
+        // Each temperature point will show the day and actual temperature of it in the left of the sketch
+        textAlign(LEFT);
+        
+        text("Temperature", 36, 400);
+        text("Day", 525, 675);
         
         text("Day: " + (rows + 1), 600, 300);
         text("Actual Temperature: " + temperatures[rows][columns] + "°C",
