@@ -86,7 +86,7 @@ void draw()
   fill(235, 255, 10, 180); 
   noStroke(); // Removes the outline from the filled shape
   fill(255, 112, 82, 180); // Warm coral sunset wave
-  image(weather, 675, 10, 150, 50); // Size and positioning of image
+  image(weather, 675, 20, 150, 50); // Size and positioning of image
   
   beginShape(); // Creates the mountainous waves
 
